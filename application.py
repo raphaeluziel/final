@@ -1,3 +1,4 @@
+import psycopg2
 import os
 
 from cs50 import SQL
@@ -35,8 +36,8 @@ Session(app)
 
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///final.db")
-
+#db = SQL("sqlite:///final.db")
+db = SQL(os.environ.get("DATABASE_URL") or "sqlite://final.db")
 
 @app.route("/", methods=["GET", "POST"])
 @login_required
