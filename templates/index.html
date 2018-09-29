@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block main %}
+
+    <h1>CS50 Final Project - Quotes Inspired by Astronomy</h1>
+    <hr>
+
+    <div id="welcome">Welcome, {{ username[0].firstname }}</div>
+
+    <div>
+        <h2>NASA: Astronomy Picture of the Day</h2>
+        <p id="fromDate"></p>
+        <a href="#" target="_blank" id="picture_link">
+            <img id="apod_img_id" width="450px" class="center" alt="NASA Picture of the Day"/>
+            <iframe id="apod_vid_id" type="text/html" width="640" height="385" frameborder="0" class="center" alt="NASA Video of the Day"></iframe>
+        </a>
+        <p id="copyright"></p>
+    </div>
+
+    <h3 id="apod_title"></h3>
+
+    <p id="apod_explaination"></p>
+
+    <p><b>Hopefully, this picture will inspire you to write a thought, a quote, an impression.  If so, please do so below:</b></p>
+
+    <form action="/" method="post">
+     <div class="form-group">
+       <label for="quote">Your quote:</label>
+       <textarea class="form-control" rows="3" id="quote" name="quote"></textarea>
+     </div>
+     <input type="hidden" class="form-control" id="image_link" name="image_link" value="?">
+     <input type="hidden" class="form-control" id="image_title" name="image_title" value="X">
+     <button type="submit" class="btn btn-primary">Submit Quote</button>
+   </form>
+
+    <br>
+    {% if last_quote is defined and last_quote|length > 0 %}
+        <div id="what_to_tweet"><a href="{{ last_quote[0].picture_url }}" target="_blank">{{ last_quote[0].picture_title }}</a>: {{ last_quote[0].quote }}</div>
+    {% endif %}
+
+   <br>
+
+   <a id="twitterButton" class="twitter-share-button" href="https://twitter.com/intent" data-size="large" data-text="custom share text" data-url="#">Tweet</a>
+
+   <br />
+   <p><b></strong>Here are all your submitted thoughts and corresponding links to images that inspired them:</b></p>
+   <ul>
+        {% if quote is defined and quote|length > 0 %}
+            {% for quote in quote %}
+                <li><i><a href="{{ quote.picture_url }}" target="_blank">{{ quote.picture_title }}</a>: {{ quote.quote }}</i></li>
+            {% endfor %}
+        {% endif %}
+   </ul>
+
+   <input type="date" class="form-control" id="setDate" name="setDate">
+   <button type="button" class="btn btn-primary" id="setDateBtn">Change Date</button>
+
+{% endblock %}

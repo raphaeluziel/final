@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/ required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="firstname" placeholder="First Name" type="text" required/>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="lastname" placeholder="Last Name" type="text"/ required>
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="email" placeholder="Email" type="email" required/>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password"/ required> *
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder="Retype password" type="password"/ required> *
+        </div>
+        <p><small>* Passwords must contain at least one uppercase and one lowercase letter, as well as at least one number and must be at least 6 characters in length</small></p>
+        <button class="btn btn-success" type="submit">Register</button>
+    </form>
+    {% endblock %}
