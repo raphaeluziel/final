@@ -28,6 +28,11 @@
 
     <p><b>Hopefully, this picture will inspire you to write a thought, a quote, an impression.<br>If so, please do so below:</b></p>
 
+    <p><i>If not, you can change the date and load up a new picture</i></p>
+
+    <input type="date" class="form-control" id="setDate" name="setDate">
+    <button type="button" class="btn btn-primary" id="setDateBtn">Change Date</button>
+
     <form action="/" method="post">
        <textarea class="form-control" rows="3" cols="80" id="quote" name="quote"></textarea><br>
        <input type="hidden" class="form-control" id="image_link" name="image_link" value="?">
@@ -41,9 +46,10 @@
 
    <br>
    <p>Click the button below to Tweet your latest thoughts alongside a link to the image that inspired it</p>
-   <a id="twitterButton" class="twitter-share-button" href="https://twitter.com/intent" data-size="large" data-text="custom share text" data-url="#">Tweet</a>
+   <a id="twitterButton" class="twitter-share-button" href="https://twitter.com/intent" data-size="large" data-text="custom share text" data-url="#">Tweet</a><br>
+   <p id="chars">257</p> characters remaining
 
-   <br />
+   <hr />
    <p><b></strong>Here are all your submitted thoughts and corresponding links to images that inspired them:</b></p>
    <ul>
         {% if quote is defined and quote|length > 0 %}
@@ -52,8 +58,5 @@
             {% endfor %}
         {% endif %}
    </ul>
-
-   <input type="date" class="form-control" id="setDate" name="setDate">
-   <button type="button" class="btn btn-primary" id="setDateBtn">Change Date</button>
 
 {% endblock %}
