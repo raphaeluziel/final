@@ -73,10 +73,10 @@ $(document).ready(function() {
 
   quotetosubmit = document.getElementById("what_to_tweet").innerHTML;
 
-  $('textarea').keyup(function() {
+  $("#quote").keyup(function() {
     var length = $(this).val().length;
     var length = maxLength-length;
-    $('#chars').text(length);
+    $("#chars").text(length);
   });
 
   $("#twitterButton").attr("data-text", quotetosubmit);
