@@ -31,17 +31,16 @@
     <form action="/" method="post">
        <textarea class="form-control" rows="3" cols="80" id="quote" name="quote"></textarea><br>
        <input type="hidden" class="form-control" id="image_link" name="image_link" value="?">
-       <input type="hidden" class="form-control" id="image_title" name="image_title" value="X">
+       <input type="hidden" class="form-control" id="image_title" name="image_title" value="X"><br>
        <button type="submit" class="btn btn-primary">Submit Quote</button>
    </form>
 
-    <br>
     {% if last_quote is defined and last_quote|length > 0 %}
-        <div id="what_to_tweet" style="display:none">{{ last_quote[0].picture_url }}: {{ last_quote[0].quote }}</div>
+        <div id="what_to_tweet" style="display:none">{{ quote[0].picture_url }}: {{ quote[0].quote }}</div>
     {% endif %}
 
    <br>
-
+   <p>Click the button below to Tweet your latest thoughts alongside a link to the image that inspired it</p>
    <a id="twitterButton" class="twitter-share-button" href="https://twitter.com/intent" data-size="large" data-text="custom share text" data-url="#">Tweet</a>
 
    <br />

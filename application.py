@@ -47,7 +47,7 @@ def index():
 
     # Find last quote submitted and populate tweet button with it
     username = db.execute("SELECT * FROM users WHERE user_id = :user_id", user_id=session["user_id"])
-    last_quote = db.execute("SELECT * FROM quotes WHERE username = :username ORDER BY quote_id DESC LIMIT 1", username=username[0]["username"])
+    #last_quote = db.execute("SELECT * FROM quotes WHERE username = :username ORDER BY quote_id DESC LIMIT 1", username=username[0]["username"])
 
     # User reached via post
     if request.method == "POST":
@@ -63,10 +63,10 @@ def index():
 
     # Show the quotes user has submitted
     username = db.execute("SELECT * FROM users WHERE user_id = :user_id", user_id=session["user_id"])
-    quote = db.execute("SELECT * FROM quotes WHERE username=:username", username=username[0]["username"])
-    last_quote = db.execute("SELECT * FROM quotes WHERE username = :username ORDER BY quote_id DESC LIMIT 1", username=username[0]["username"])
+    quote = db.execute("SELECT * FROM quotes WHERE username=:username ORDER BY quote_id DESC", username=username[0]["username"])
+    #last_quote = db.execute("SELECT * FROM quotes WHERE username = :username ORDER BY quote_id DESC LIMIT 1", username=username[0]["username"])
 
-    return render_template("index.html", quote=quote, last_quote=last_quote, username=username)
+    return render_template("index.html", quote=quote, username=username)
 
 
 @app.route("/login", methods=["GET", "POST"])
