@@ -37,7 +37,7 @@
 
     <br>
     {% if last_quote is defined and last_quote|length > 0 %}
-        <div id="what_to_tweet" style="display:none">{{ last_quote[0].picture_url }}:%0a{{ last_quote[0].quote }}</div>
+        <div id="what_to_tweet" style="display:none">{{ last_quote[0].picture_url }}: {{ last_quote[0].quote }}</div>
     {% endif %}
 
    <br>
