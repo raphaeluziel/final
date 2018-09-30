@@ -35,7 +35,7 @@
        <button type="submit" class="btn btn-primary">Submit Quote</button>
    </form>
 
-    {% if last_quote is defined and last_quote|length > 0 %}
+    {% if quote is defined and quote|length > 0 %}
         <div id="what_to_tweet" style="display:none">{{ quote[0].picture_url }}: {{ quote[0].quote }}</div>
     {% endif %}
 
